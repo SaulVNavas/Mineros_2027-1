@@ -25,6 +25,9 @@ def quitar_nulos(df):
         porcentaje = detectar_porcentaje_de_nulos(df,col)
         if porcentaje == 0:
             continue
+        if col == "edad_primer_union":
+            imputar_col.append(pl.col(col).fill_null(99))
+            continue
         if(col in columnas_revisadas_por_imputar):
             imputar_col.append(pl.col(col).fill_null(0))
             continue
