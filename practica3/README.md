@@ -44,3 +44,18 @@ pip install -r requirements.txt
 ```
 
 ## Ejecutar el  pipeline
+Desde `proyecto-endireh-violencia`, para ejecutar el codigo de Preprocesamiento
+
+#### Windows:
+```
+python -m src.cleaning.preprocessing 
+```
+#### Mac o Linux:
+```
+python3 -m src.cleaning.preprocessing
+```
+
+Para ver que hacen los Jupyter notebook, basta con abrirlos con VSCode o con cualquier otro lector de Jupyter notebook.
+
+En el reporte se encuentra todos los Jupyter notebooks con sus respectivos resultados de cada codigo ejecutado.
+
