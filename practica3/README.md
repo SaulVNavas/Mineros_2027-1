@@ -44,3 +44,28 @@ pip install -r requirements.txt
 ```
 
 ## Ejecutar el  pipeline
+
+[falta pipeline]
+
+
+# Cuestionario sobre la práctica
+
+### 1. 
+
+### 2.
+
+### 3.
+
+### 4. Se comparó la media simple de edad primer union contra la media ponderada por 'factor_expansion'. ¿Por qué pueden diferir? ¿Cuál de las dos deber ́ıa reportarse si el objetivo es describir a la población nacional y no solo a la muestra encuestada?
+
+**R.**
+    Las cifras difieren porque la media simple asume erróneamente que cada persona en la base de datos tiene exactamente la misma probabilidad de haber sido encuestada, lo que hace que todos los registros tengan la misma validez; no obstante, el factor de expansión añade valores de importancia para abarcar los efectos del encapsulamiento de sectores poblacionales completos en representaciones que, sin dicho factor, se consideran para una única persona.
+
+    Es por esto que, al buscar describir no solo al conjunto de personas entrevistadas, sino a la población nacional, se debe reportar la media ponderada, pues las cantidades de personas consideradas que ésta engloba permiten reflejar al país completo con proporciones más acertadas.
+
+### 5. Si el coeficiente de variación de edad_primer_union resulta considerablemente más alto en el grupo que reportó violencia de pareja que en el que no, ¿qué hipótesis plantearíamos para explicarlo, y qué otra variable del dataset ayudaría a confirmarla o descartarla?
+
+**R.**
+    Si la situación es verdadera, entonces podemos plantear una hipótesis sobre la distribución, declarando que la concentración de situaciones de violencia de pareja no se da hacia un rango de edades concreto, sino que puede ser una mezcla entre las edades consideradas como tempranas, por causas derivadas de la alta vulnerabilidad de esos sectores; y las consideradas como comunes, por causas diferentes a las primeras mencionadas.
+
+    Esto se puede respaldar o refutar con factores como estrato_socioeconomico y nivel_escolaridad, pudiendo confirmar si las uniones a edades tempranas se asocian con situaciones de bajos recursos y baja escolaridad, o si, por el contrario, dichos valores tienen baja heterogeneidad a lo largo del intervalo de edades.
