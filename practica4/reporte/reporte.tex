@@ -95,21 +95,21 @@
 \end{titlepage}
 
 \section{Medidas de Heterogeneidad}
-Se seleccionaron las variables de \texttt{nom\_municipio}, \texttt{nivel\_escolaridad} y \texttt{tiene\_ahorros\_id} para realizar las medidas de Índice de Variación Cualitativa (IQV), Índice de Gini-Simpson y Entropía de Shannon; no se realizó la ponderación con respecto al factor de expansión, esto con el fin de revisar los valores obtenidos con respecto a los registros originales. 
+Se seleccionaron las variables de \texttt{nom\_municipio}, \texttt{nivel\_escolaridad} y \texttt{tiene\_ahorros\_id} para realizar las medidas de Índice de Variación Cualitativa (IQV), Índice de Gini-Simpson y Entropía de Shannon; los registros están ponderados con respecto al factor de expansión, esto con el fin de revisar los valores obtenidos no con respecto a los registros originales sino con respecto a los valores que la encuesta busca reflejar realmente.
 
-Las interpretaciones correspondientes a los valores obtenidos pueden ser observados en el apartado de \textbf{Tabla de resultados y localización}. 
+Las interpretaciones correspondientes a los valores obtenidos pueden ser observadas en el apartado de \textbf{Tabla de resultados y localización}. 
 
 \section{Medidas de Concentración – Curva de Lorenz y Coeficiente de Gini}
 Se tomó la variable \texttt{tiene} para realizar las mediciones de Curva de Lorenz y Coeficiente de Gini; los registros fueron ponderados con respecto al factor de expansión con el fin de realizar una observación más fiel a la realidad geodemográfica de las proporciones de casos de violencia, ya que, en un estudio que busca reflejar la situación social nacional, es necesario abarcar las medidas representativas de los registros capturados por el INEGI.
 
-Las interpretaciones correspondientes a los valores obtenidos pueden ser observados en el apartado de \textbf{Tabla de resultados y localización}. 
+Las interpretaciones correspondientes a los valores obtenidos pueden ser observadas en el apartado de \textbf{Tabla de resultados y localización}. 
 
 \section{Síntesis – Gini y Entropía sobre la Misma Variable}
-Se seleccionó la variable \texttt{estrato\_socioeconomico} para realizar las medidas de Entropía de Shannon y Coeficiente de Gini; no se realizó la ponderación con respecto al factor de expansión, esto con el fin de estudiar únicamente los registros originales en esta parte de la práctica.
+Se seleccionó la variable \texttt{estrato\_socioeconomico} para realizar las medidas de Entropía de Shannon y Coeficiente de Gini; no se realizó la ponderación con respecto al factor de expansión, esto con el fin de estudiar únicamente los registros originales para evitar así la generación de sesgos
 
 En el análisis del \texttt{estrato\_socioeconomico}, la diferencia conceptual radica en que la Entropía de Shannon mide el grado de incertidumbre o impredecibilidad al intentar adivinar a qué nivel pertenece un registro aleatorio, evaluando el equilibrio informativo de toda la distribución; por otra parte, el coeficiente de Gini-Simpson evalúa la concentración poblacional calculando la probabilidad exacta de que dos mujeres elegidas al azar pertenezcan a estratos diferentes, lo que lo convierte en una métrica mucho más influenciada por la forma en que se aglomera la gran mayoría de la muestra dentro de las categorías dominantes.
 
-Las interpretaciones correspondientes a los valores obtenidos pueden ser observados en el apartado de \textbf{Tabla de resultados y localización}. 
+Las interpretaciones correspondientes a los valores obtenidos pueden ser observadas en el apartado de \textbf{Tabla de resultados y localización}. 
 
 \section{Tabla de resultados y reflexión.}
 
@@ -241,10 +241,10 @@ Las medidas de las variables fueron tomadas con respecto a la clasificación bin
         &
         \makecell{\makecell{Índice de\\Gini-Simpson}}
         &
-        \makecell{\\0.995428\\\texttt{ }}
+        \makecell{\\0.995936\\\texttt{ }}
         &
         \multirow{-2}{*}{\makecell[l]{
-            Existe un $99.54\%$ de probabilidad de que dos\\
+            Existe un $99.59\%$ de probabilidad de que dos\\
             personas elegidas al azar en la muestra\\provengan de municipios distintos.\\
             El IQV aproximado a 1 indica que las categorí-\\
             as de municipios son muchas y tienen una\\
@@ -254,13 +254,13 @@ Las medidas de las variables fueron tomadas con respecto a la clasificación bin
         &
         \makecell{IQV}
         &
-        \makecell{\\0.996254\\\texttt{ }}
+        \makecell{\\0.996763\\\texttt{ }}
         &
         \\\cline{2-4}
         &
-        \makecell{Entropía de\\Shannon (bits)}
+        \makecell{Entropía de\\Shannon}
         &
-        \makecell{\\8.882818\\\texttt{ }}
+        \makecell{\\8.919625\\\texttt{ }}
         &
         \makecell[l]{
             La incertidumbre sobre la procedencia
@@ -272,13 +272,13 @@ Las medidas de las variables fueron tomadas con respecto a la clasificación bin
         &
         \makecell{\makecell{Índice de\\Gini-Simpson}}
         &
-        \makecell{\\0.59883\\\texttt{ }}
+        \makecell{\\0.665619\\\texttt{ }}
         &
         \multirow{-2}{*}{\makecell[l]{
             Si se toman dos encuestadas al azar, hay casi\\
-            un $60\%$ de probabilidad de que pertenezcan\\
+            un $66.56\%$ de probabilidad de que pertenezcan\\
             a niveles educativos diferentes.\\
-            El IQV del $71.86\%$ demuestra que los datos\\
+            El IQV del $79.87\%$ demuestra que los datos\\
             de la tabla sin ponderar se distribuyen am-\\
             pliamente entre las categorías.
         }}
@@ -286,7 +286,7 @@ Las medidas de las variables fueron tomadas con respecto a la clasificación bin
         &
         \makecell{IQV}
         &
-        \makecell{\\0.718596\\\texttt{ }}
+        \makecell{\\0.798743\\\texttt{ }}
         &
         \\\cline{2-4}
         &
@@ -295,36 +295,36 @@ Las medidas de las variables fueron tomadas con respecto a la clasificación bin
         1.810903
         &
         \makecell[l]{
-            Se tiene un grado de incertidumbre elevado,
-            \\pues existe representación sustancial en\\
-            múltiples niveles educativos.\\
+            Se tiene un grado de incertidumbre elevado,\\
+            pues se requiere de $\sim$1.98 bits (preguntas)\\
+            para hallar la categoría de un registro.
         }
         \\ \hline
         \multirow{7}{*}{\makecell{¿Tiene\\ahorros?}}
         &
         \makecell{\makecell{Índice de\\Gini-Simpson}}
         &
-        \makecell{\\0.193331\\\texttt{ }}
+        \makecell{\\0.191773\\\texttt{ }}
         &
         \multirow{-2}{*}{\makecell[l]{
-            Solo hay un $19.33\%$ de probabilidad de que\\
+            Solo hay un $19.17\%$ de probabilidad de que\\
             dos registros seleccionados al azar difieran\\
             en su respuesta.\\
-            El IQV de $0.3867$ confirma que la variable\\
-            está muy lejos de ser tener una distribución\\
+            El IQV de $0.3835$ confirma que la variable\\
+            está muy lejos de tener una distribución\\
             equitativa.
         }}
         \\\cline{2-4}
         &
         \makecell{IQV}
         &
-        \makecell{\\0.386661\\\texttt{ }}
+        \makecell{\\0.383546\\\texttt{ }}
         &
         \\\cline{2-4}
         &
         \makecell{Entropía de\\Shannon (bits)}
         &
-        \makecell{\\0.495133\\\texttt{ }}
+        \makecell{\\0.492106\\\texttt{ }}
         &
         \makecell[l]{
             La incertidumbre es muy baja pues, como gran\\
@@ -336,7 +336,7 @@ Las medidas de las variables fueron tomadas con respecto a la clasificación bin
 \end{center}
 
 \subsection{Medidas de Concentración.}
-Las medidas fueron aplicadas a la cantidad de casos de violencia de pareja reportados, estando los registros ponderados conforme sus respectivos factores de expansión reportados.
+Las medidas fueron aplicadas a la cantidad de casos de violencia de pareja reportados, estando los registros ponderados conforme a sus respectivos factores de expansión reportados.
 \begin{center}
     \begin{tabular}{c|c|l}
         \makecell{\textbf{Medida}} & \textbf{Valor obtenido} & \makecell{\textbf{Interpretación en el contexto de}\\\textbf{violencia contra las mujeres}}
@@ -374,7 +374,7 @@ Las medidas fueron aplicadas a la cantidad de casos de violencia de pareja repor
         &
         \makecell{Entropía\\de Shannon}
         &
-        \makecell{Bits: 1.7169\\Relativa: $85.84\%$}
+        \makecell{Bits: 1.7443\\Relativa: $87.22\%$}
         &
         \makecell[l]{
             Ya que la entropía en bits tiene un\\
@@ -387,7 +387,7 @@ Las medidas fueron aplicadas a la cantidad de casos de violencia de pareja repor
         &
         \makecell{Coeficiente de Gini}
         &
-        0.3294
+        0.3144
         &
         \makecell[l]{
             Pese a la participación de los estratos,\\
@@ -409,7 +409,7 @@ Por otra parte, el coeficiente de Gini calculado, que es de $G=0.417820$ i.e., d
 Esta diferencia puede reflejar ya sea un nivel de violencia más activa en unos estados que en otros en cuanto a la probabilidad individual, o a la densidad poblacional variante que afecta la ponderación de los casos registrados.
 
 \subsection{A partir de los resultados obtenidos en toda la práctica, ¿qué limitaciones se detectan en los datos, en las variables disponibles o en el análisis realizado?}
-Primero, se generan múltiples por valores faltantes y codificación implícita pues, por ejemplo, más de la mitad de los registros de \texttt{ingreso\_pareja} están ausentes, y muchos valores de \texttt{edad\_primer\_union} tienen registros codificados en 0, factores que distorcionan a todas las medidas que se toman (como 98 o 99, utilizados para ``No sabe'' / ``No responde''). Además, existen valores corruptos en los registros como ``jesã\symbol{"009A}s marã\symbol{"008D}a'', ``pesquerã\symbol{"008D}a'' y ``querã\symbol{"0089}taro''.
+Primero, se generan múltiples inconsistencias por valores faltantes y codificación implícita pues, por ejemplo, más de la mitad de los registros de \texttt{ingreso\_pareja} están ausentes, y muchos valores de \texttt{edad\_primer\_union} tienen registros codificados en 0, factores que distorsionan a todas las medidas que se toman (como 98 o 99, utilizados para ``No sabe'' / ``No responde''). Además, existen valores corruptos en los registros como ``jesã\symbol{"009A}s marã\symbol{"008D}a'', ``pesquerã\symbol{"008D}a'' y ``querã\symbol{"0089}taro''.
 
 Es por esto que algunas mejoras que pueden ser aplicadas en un siguiente ciclo son:
  \begin{itemize}
@@ -419,15 +419,15 @@ Es por esto que algunas mejoras que pueden ser aplicadas en un siguiente ciclo s
  \end{itemize}
 
 \subsection{¿Cómo podrían las medidas de localización, variabilidad, heterogeneidad y concentración calculadas en esta práctica orientar decisiones posteriores del proyecto, como la selección de variables para un modelo predictivo o de segmentación?}
-Un caso se da al observar el alto coeficiente de Gini confirma que el volumen de casos ponderados de violencia de pareja no se distribuye de manera uniforme en el país, sino que se concentra en un grupo reducido de entidades, lo que puede determinar las zonas que requieran una mayor prioridad de recursos en proyectos sociales.
+Un caso se da cuando, al observar el alto coeficiente de Gini, se confirma que el volumen de casos ponderados de violencia de pareja no se distribuye de manera uniforme en el país, sino que se concentra en un grupo reducido de entidades, lo que puede determinar las zonas que requieran una mayor prioridad de recursos en proyectos sociales.
 
-Por otra parte, saber que la concentración de zonas en los registros varía al ponderar por los valores de de \texttt{factor\_expansion} implica que los algoritmos de de cálculo no deben decidir sobre registros sin ponderación, sino que se deben utilizar argumentos de pesos para evitar un sesgo hacia las zonas con más registros.
+Por otra parte, saber que la concentración de zonas en los registros varía al ponderar por los valores de \texttt{factor\_expansion} implica que los algoritmos de cálculo no deben decidir sobre registros sin ponderación, sino que se deben utilizar argumentos de pesos para evitar un sesgo hacia las zonas con más registros.
 
 \subsection{Al presentar públicamente un índice de concentración (Gini) por entidad federativa sobre un tema como la violencia contra las mujeres, ¿qué consideraciones éticas y de comunicación debe tener el equipo para evitar estigmatizar regiones o minimizar la gravedad del problema en las entidades con menor concentración relativa?}
 
-Presentar índices de concentración sobre un tema delicado como lo es la violencia contra las mujeres requiere que las métricas no minimicen la realidad social de los escenarios de riesgo, por lo que es importante aclarar el propósito técnico de los estudios para no relativizar la violencia y postular posturas en dilemas de prioridad moral, pues una posición baja en la curva de Lorenz no justifica restar urgencia a la atención de la zona.
+Presentar índices de concentración sobre un tema delicado como lo es la violencia contra las mujeres requiere que las métricas no minimicen la realidad social de los escenarios de riesgo, por lo que es importante aclarar el propósito técnico de los estudios para no relativizar la violencia y declarar precipitadamente posturas en dilemas de prioridad moral, pues una posición baja en la curva de Lorenz no justifica restar urgencia a la atención de la zona.
 
-Además, la falta de rigurosidad en las conclusiones arrojadas por el estudio de la tabla pueden generar estigmas en la sociedad pues, por un lado, los datos no ponderados pueden causar situaciones donde se intuye el nivel de seguridad de una entidad federativa sin analizar consigo el volumen real que representan los registros y, además, el no incluir otros estudios para conocer las condiciones que dan pie a los valores registrados pueden dar pie a declaraciones que denoten un ambiente de violencia descontextualizado.
+Además, la falta de rigurosidad en las conclusiones arrojadas por el estudio de la tabla puede generar estigmas en la sociedad pues, por un lado, los datos no ponderados pueden causar situaciones donde se intuye el nivel de seguridad de una entidad federativa sin analizar consigo el volumen real que representan los registros y, además, el no incluir otros estudios para conocer las condiciones que dan pie a los valores registrados pueden dar pie a declaraciones que denoten un ambiente de violencia descontextualizado.
 
 
 \end{document}
