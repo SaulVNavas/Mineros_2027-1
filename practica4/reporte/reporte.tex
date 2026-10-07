@@ -1,0 +1,433 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel} 
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx} 
+\usepackage{booktabs}
+\usepackage{geometry} 
+\usepackage{hyperref} 
+\usepackage{listings} 
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{multirow} % Required in your preamble
+\usepackage{array}
+\usepackage{calc}
+\usepackage{fancyvrb}                 
+\usepackage{makecell}
+\usepackage[breakable]{tcolorbox}     
+\tcbuselibrary{breakable}    
+\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\setlength{\parskip}{1em}
+
+\lstset{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\begin{document}
+
+% ==============================================================================
+% PORTADA
+% ==============================================================================
+\begin{titlepage}
+    \centering
+    {\large \textbf{Universidad Nacional Autónoma de México}} \\[0.3cm]
+    {\large \textbf{Facultad de Ciencias}} \\[1.5cm]
+    
+    % Si los logos oficiales no estan en img/, se omiten sin romper la compilacion
+    \begin{minipage}{0.45\textwidth}
+      \centering
+      \IfFileExists{img/logo-unam.png}{\includegraphics[height=3.5cm]{img/logo-unam.png}}{}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+      \centering
+      \IfFileExists{img/logo-fc.png}{\includegraphics[height=3.5cm]{img/logo-fc.png}}{}
+    \end{minipage}
+    
+    \vspace{1.5cm}
+
+    
+    {\Large \textbf{Licenciatura en Ciencias de la Computación}} \\[0.5cm]
+    {\Large \textbf{Asignatura:} Almacenes y Minería de Datos} \\[1cm]
+    \vspace{2.5em}
+    {\LARGE \textbf{Práctica 4: Medidas de Concentración, Heterogenidad, Gini y Entropía}} \\
+    \begin{center}
+      \Large \textbf{Reporte de práctica}
+    \end{center}
+    \vspace{2.5em}
+    \textbf{\large Integrantes del Equipo:} \\[0.4cm]
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{lc}
+            \toprule
+            \textbf{Nombre} & \textbf{Número de Cuenta} \\
+            \midrule
+            Vega Navas Saúl & 322088267 \\
+            Cimmino Yáñez Nicholas Joseph & 322490712 \\
+            Benítez Pérez Kristian Leonel & 322011346 \\
+            Herrera Cuamatla Jennifer Jade & 322255481 \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+    \vfill
+    {\large \textbf{Fecha de entrega:} Miércoles 7 de octubre de 2026}
+\end{titlepage}
+
+\section{Medidas de Heterogeneidad}
+Se seleccionaron las variables de \texttt{nom\_municipio}, \texttt{nivel\_escolaridad} y \texttt{tiene\_ahorros\_id} para realizar las medidas de Índice de Variación Cualitativa (IQV), Índice de Gini-Simpson y Entropía de Shannon; no se realizó la ponderación con respecto al factor de expansión, esto con el fin de revisar los valores obtenidos con respecto a los registros originales. 
+
+Las interpretaciones correspondientes a los valores obtenidos pueden ser observados en el apartado de \textbf{Tabla de resultados y localización}. 
+
+\section{Medidas de Concentración – Curva de Lorenz y Coeficiente de Gini}
+Se tomó la variable \texttt{tiene} para realizar las mediciones de Curva de Lorenz y Coeficiente de Gini; los registros fueron ponderados con respecto al factor de expansión con el fin de realizar una observación más fiel a la realidad geodemográfica de las proporciones de casos de violencia, ya que, en un estudio que busca reflejar la situación social nacional, es necesario abarcar las medidas representativas de los registros capturados por el INEGI.
+
+Las interpretaciones correspondientes a los valores obtenidos pueden ser observados en el apartado de \textbf{Tabla de resultados y localización}. 
+
+\section{Síntesis – Gini y Entropía sobre la Misma Variable}
+Se seleccionó la variable \texttt{estrato\_socioeconomico} para realizar las medidas de Entropía de Shannon y Coeficiente de Gini; no se realizó la ponderación con respecto al factor de expansión, esto con el fin de estudiar únicamente los registros originales en esta parte de la práctica.
+
+En el análisis del \texttt{estrato\_socioeconomico}, la diferencia conceptual radica en que la Entropía de Shannon mide el grado de incertidumbre o impredecibilidad al intentar adivinar a qué nivel pertenece un registro aleatorio, evaluando el equilibrio informativo de toda la distribución; por otra parte, el coeficiente de Gini-Simpson evalúa la concentración poblacional calculando la probabilidad exacta de que dos mujeres elegidas al azar pertenezcan a estratos diferentes, lo que lo convierte en una métrica mucho más influenciada por la forma en que se aglomera la gran mayoría de la muestra dentro de las categorías dominantes.
+
+Las interpretaciones correspondientes a los valores obtenidos pueden ser observados en el apartado de \textbf{Tabla de resultados y localización}. 
+
+\section{Tabla de resultados y reflexión.}
+
+\subsection{Medidas de localización.}
+\begin{center}
+    \begin{tabular}{c|c|c|c}
+        \makecell{\textbf{Variable}} & \textbf{Medida} & \makecell{\textbf{Valor}\\\textbf{obtenido}} & \makecell{\textbf{Interpretación en el contexto de}\\\textbf{violencia contra las mujeres}}
+        \\ \hline
+        \multirow{6}{*}{\makecell{Edad de\\primera\\unión}}
+        &
+        {Media}
+        &
+        10.026312
+        &
+        \makecell[l]{Edad promedio teórica a la que las mujeres \\encuestadas iniciaron su primera unión\\conyugal o de pareja.}
+        \\\cline{2-4}
+        &
+        \makecell{Media ponderada con\\\texttt{factor\_expansion}}
+        &
+        \makecell{9.700188}
+        &
+        \makecell[l]{Indica el promedio conforme a la cantidad\\ proporcional de mujeres en el mundo real\\a cada respuesta registrada.}
+        \\\cline{2-4}
+        
+        &
+        \makecell{Mediana ponderada\\con \texttt{factor\_expansion}}
+        &
+        \makecell{6}
+        &
+        \makecell[l]{El $50\%$ de las mujeres encuestadas inició\\su primera unión a esa edad o antes.}
+        \\ \hline
+        \multirow{7}{*}{\makecell{Cantidad\\de hijos}}
+        &
+        {Media}
+        &
+        2.523377
+        &
+        \makecell[l]{
+            Tasa promedio de carga familiar en la\\
+            muestra únicamente con respecto a las\\
+            personas entrevistadas.
+        }
+        \\\cline{2-4}
+        &
+        \makecell{Media ponderada con\\\texttt{factor\_expansion}}
+        &
+        \makecell{2.454702}
+        &
+        \makecell[l]{
+            La estimación que proyecta la situación\\
+            poblacional con más precisión al ajustarla\\
+            a los pesos muestrales del INEGI.
+        }
+        \\\cline{2-4}
+        
+        &
+        \makecell{Mediana ponderada\\con \texttt{factor\_expansion}}
+        &
+        \makecell{3\\}
+        &
+        \makecell[l]{El $50\%$ de las mujeres con registros de\\descendencia tiene 3 hijos o menos.}
+    \end{tabular}
+\end{center}
+
+\subsection{Medidas de variabilidad.}
+Las medidas de las variables fueron tomadas con respecto a la clasificación binaria del criterio \texttt{sufrio\_violencia\_pareja}, siendo el grupo positivo el de aquellos registros con reporte de violencia detectada y, el grupo negativo, el de aquellos que no.
+\begin{center}
+    \begin{tabular}{c|c|c|c}
+        \makecell{\textbf{Medida}} & \textbf{Variable} & \textbf{Valor obtenido} & \makecell{\textbf{Interpretación en el contexto de}\\\textbf{violencia contra las mujeres}}
+        \\ \hline
+        \multirow{5}{*}{\makecell{Edad de\\primera\\unión}}
+        &
+        \makecell{CV}
+        &
+        \makecell{Grupo positivo:\\$1.048624$
+        \\Grupo negativo:\\$1.080321$
+        }
+        &
+        \makecell[l]{
+            Siendo mayor el CV del grupo positivo que el\\del grupo negativo, se observa que la violencia\\de pareja es un problema que se distribuye a\\lo largo de un espectro más amplio de edades.
+        }
+        \\\cline{2-4}
+        &
+        \makecell{IQR}
+        &
+        \makecell{Grupo positivo: $13$
+        \\Grupo negativo: $13$
+        }
+        &
+        \makecell[l]{Ya que la amplitud es igual para ambos grupos,\\se puede teorizar que la edad de unión por sí\\sola no es un factor de vulnerabilidad frente a\\
+        la violencia, pero falta analizar los cuartiles.}
+        \\ \hline
+        \multirow{3}{*}{\makecell{Cantidad\\de hijos}}
+        &
+        \makecell{CV}
+        &
+        \makecell{Grupo positivo:\\$0.488340$
+        \\Grupo negativo:\\$0.461547$
+        }
+        &
+        \makecell[l]{
+            Confirma que el riesgo de sufrir violencia no se\\
+            manifiesta estrictamente en escenarios con un\\número
+            típico de hijos, sino que se manifiesta
+            \\en contextos diversos.
+        }
+        \\\cline{2-4}
+        &
+        \makecell{IQR}
+        &
+        \makecell{Grupo positivo: $3$
+        \\Grupo negativo: $2$
+        }
+        &
+        \makecell[l]{
+            La violencia de pareja no está acotada a una\\
+            configuración familiar específica, como a familias\\
+            muy numerosas o solamente a mujeres sin hijos.
+        }
+
+    \end{tabular}
+\end{center}
+\subsection{Medidas de Heterogeneidad.}
+\begin{center}
+    \begin{tabular}{c|c|c|l}
+        \makecell{\textbf{Variable}} & \textbf{Medida} & \textbf{Valor obtenido} & \makecell{\textbf{Interpretación en el contexto de}\\\textbf{violencia contra las mujeres}}
+        \\ \hline
+        \multirow{7}{*}{\makecell{Nombre de\\municipio}}
+        &
+        \makecell{\makecell{Índice de\\Gini-Simpson}}
+        &
+        \makecell{\\0.995428\\\texttt{ }}
+        &
+        \multirow{-2}{*}{\makecell[l]{
+            Existe un $99.54\%$ de probabilidad de que dos\\
+            personas elegidas al azar en la muestra\\provengan de municipios distintos.\\
+            El IQV aproximado a 1 indica que las categorí-\\
+            as de municipios son muchas y tienen una\\
+            cantidad muy parecida de registros.
+        }}
+        \\\cline{2-4}
+        &
+        \makecell{IQV}
+        &
+        \makecell{\\0.996254\\\texttt{ }}
+        &
+        \\\cline{2-4}
+        &
+        \makecell{Entropía de\\Shannon (bits)}
+        &
+        \makecell{\\8.882818\\\texttt{ }}
+        &
+        \makecell[l]{
+            La incertidumbre sobre la procedencia
+            \\municipal de un registro es muy alta.
+        }
+        \makecell[l]{}
+        \\ \hline
+        \multirow{7}{*}{\makecell{Nivel de\\escolaridad}}
+        &
+        \makecell{\makecell{Índice de\\Gini-Simpson}}
+        &
+        \makecell{\\0.59883\\\texttt{ }}
+        &
+        \multirow{-2}{*}{\makecell[l]{
+            Si se toman dos encuestadas al azar, hay casi\\
+            un $60\%$ de probabilidad de que pertenezcan\\
+            a niveles educativos diferentes.\\
+            El IQV del $71.86\%$ demuestra que los datos\\
+            de la tabla sin ponderar se distribuyen am-\\
+            pliamente entre las categorías.
+        }}
+        \\\cline{2-4}
+        &
+        \makecell{IQV}
+        &
+        \makecell{\\0.718596\\\texttt{ }}
+        &
+        \\\cline{2-4}
+        &
+        \makecell{Entropía de\\Shannon (bits)}
+        &
+        1.810903
+        &
+        \makecell[l]{
+            Se tiene un grado de incertidumbre elevado,
+            \\pues existe representación sustancial en\\
+            múltiples niveles educativos.\\
+        }
+        \\ \hline
+        \multirow{7}{*}{\makecell{¿Tiene\\ahorros?}}
+        &
+        \makecell{\makecell{Índice de\\Gini-Simpson}}
+        &
+        \makecell{\\0.193331\\\texttt{ }}
+        &
+        \multirow{-2}{*}{\makecell[l]{
+            Solo hay un $19.33\%$ de probabilidad de que\\
+            dos registros seleccionados al azar difieran\\
+            en su respuesta.\\
+            El IQV de $0.3867$ confirma que la variable\\
+            está muy lejos de ser tener una distribución\\
+            equitativa.
+        }}
+        \\\cline{2-4}
+        &
+        \makecell{IQV}
+        &
+        \makecell{\\0.386661\\\texttt{ }}
+        &
+        \\\cline{2-4}
+        &
+        \makecell{Entropía de\\Shannon (bits)}
+        &
+        \makecell{\\0.495133\\\texttt{ }}
+        &
+        \makecell[l]{
+            La incertidumbre es muy baja pues, como gran\\
+            parte de la muestra responde una opción en\\
+            particular, entonces la variable se comporta\\
+            casi como una constante.
+        }        
+    \end{tabular}
+\end{center}
+
+\subsection{Medidas de Concentración.}
+Las medidas fueron aplicadas a la cantidad de casos de violencia de pareja reportados, estando los registros ponderados conforme sus respectivos factores de expansión reportados.
+\begin{center}
+    \begin{tabular}{c|c|l}
+        \makecell{\textbf{Medida}} & \textbf{Valor obtenido} & \makecell{\textbf{Interpretación en el contexto de}\\\textbf{violencia contra las mujeres}}
+        \\ \hline
+        \makecell{Curva de\\Lorenz}
+        &
+        \makecell{La línea resultante\\tiene una curvatura\\hacia abajo}
+        &
+        \makecell[l]{
+            La curvatura hacia abajo indica una concentración demo-\\
+            gráfica mayor para ciertos estados, en particular, para\\
+            la última parte de los estados en orden alfabético.
+        }
+        \\\hline
+        \makecell{Coeficiente\\de Gini}
+        &
+        \makecell{0.417820}
+        &
+        \makecell[l]{
+            La violencia de pareja no se reparte de forma uniforme\\
+            entre todas las entidades federativas, sino que existe\\
+            un desequilibrio cuantitativo donde se concentra una por-\\
+            ción desproporcionadamente alta de la masa nacional de\\
+            mujeres afectadas en una parte de los estados.
+        }        
+    \end{tabular}
+\end{center}
+
+\subsection{Gini vs. Entropía}
+\begin{center}
+    \begin{tabular}{c|c|c|c}
+        \makecell{\textbf{Variable}} & \textbf{Medida} & \textbf{Valor obtenido} & \makecell{\textbf{Interpretación en el contexto de}\\\textbf{violencia contra las mujeres}}
+        \\ \hline
+        \multirow{6}{*}{\makecell{Estrato\\socioeconómico}}
+        &
+        \makecell{Entropía\\de Shannon}
+        &
+        \makecell{Bits: 1.7169\\Relativa: $85.84\%$}
+        &
+        \makecell[l]{
+            Ya que la entropía en bits tiene un\\
+            valor algo cercano al valor máximo\\
+            (2) se deduce que todas las categorías
+            \\están presentes y activas en la tabla de\\
+            registros.
+        }
+        \\\cline{2-4}
+        &
+        \makecell{Coeficiente de Gini}
+        &
+        0.3294
+        &
+        \makecell[l]{
+            Pese a la participación de los estratos,\\
+            la población no está distribuida en\\
+            partes iguales ($25\%$ cada uno), siendo\\
+            que algunos estratos capturan porcen-\\
+            tajes sensiblemente menores.
+        }
+    \end{tabular}
+\end{center}
+
+
+\section{Cuestionario}
+\subsection{Interpreta la curva de Lorenz obtenida para los casos de violencia por entidad: ¿la violencia reportada está concentrada en pocas entidades o distribuida de forma relativamente homogénea en el país?}
+La distribución del número absoluto ponderado de casos de violencia de pareja reportados no es homogénea puesto que se muestra una concentración elevada en un número reducido de entidades federativas reflejada en la curvatura de la línea, ya que la tangente indica un crecimiento relativo a su pendiente. 
+
+Por otra parte, el coeficiente de Gini calculado, que es de $G=0.417820$ i.e., del 41.782\%, muestra una diferencia notoria con respecto al escenario de igualdad perfecta de $G=0$, lo que respalda la forma cualitativa de la curva de Lorenz.
+
+Esta diferencia puede reflejar ya sea un nivel de violencia más activa en unos estados que en otros en cuanto a la probabilidad individual, o a la densidad poblacional variante que afecta la ponderación de los casos registrados.
+
+\subsection{A partir de los resultados obtenidos en toda la práctica, ¿qué limitaciones se detectan en los datos, en las variables disponibles o en el análisis realizado?}
+Primero, se generan múltiples por valores faltantes y codificación implícita pues, por ejemplo, más de la mitad de los registros de \texttt{ingreso\_pareja} están ausentes, y muchos valores de \texttt{edad\_primer\_union} tienen registros codificados en 0, factores que distorcionan a todas las medidas que se toman (como 98 o 99, utilizados para ``No sabe'' / ``No responde''). Además, existen valores corruptos en los registros como ``jesã\symbol{"009A}s marã\symbol{"008D}a'', ``pesquerã\symbol{"008D}a'' y ``querã\symbol{"0089}taro''.
+
+Es por esto que algunas mejoras que pueden ser aplicadas en un siguiente ciclo son:
+ \begin{itemize}
+    \item Realizar operaciones de limpieza para separar los registros nulos en lugar de asignarles valores por defecto.
+    \item Tomar en cuenta fuentes de información adicionales como registros de densidad poblacional de menor granularidad, evitando que el factor de expansión únicamente refleje el volumen de los municipios más grandes. 
+    \item Revisar el formato de almacenamiento de las inserciones para conservar los datos contra errores de corrupción de símbolos.
+ \end{itemize}
+
+\subsection{¿Cómo podrían las medidas de localización, variabilidad, heterogeneidad y concentración calculadas en esta práctica orientar decisiones posteriores del proyecto, como la selección de variables para un modelo predictivo o de segmentación?}
+Un caso se da al observar el alto coeficiente de Gini confirma que el volumen de casos ponderados de violencia de pareja no se distribuye de manera uniforme en el país, sino que se concentra en un grupo reducido de entidades, lo que puede determinar las zonas que requieran una mayor prioridad de recursos en proyectos sociales.
+
+Por otra parte, saber que la concentración de zonas en los registros varía al ponderar por los valores de de \texttt{factor\_expansion} implica que los algoritmos de de cálculo no deben decidir sobre registros sin ponderación, sino que se deben utilizar argumentos de pesos para evitar un sesgo hacia las zonas con más registros.
+
+\subsection{Al presentar públicamente un índice de concentración (Gini) por entidad federativa sobre un tema como la violencia contra las mujeres, ¿qué consideraciones éticas y de comunicación debe tener el equipo para evitar estigmatizar regiones o minimizar la gravedad del problema en las entidades con menor concentración relativa?}
+
+Presentar índices de concentración sobre un tema delicado como lo es la violencia contra las mujeres requiere que las métricas no minimicen la realidad social de los escenarios de riesgo, por lo que es importante aclarar el propósito técnico de los estudios para no relativizar la violencia y postular posturas en dilemas de prioridad moral, pues una posición baja en la curva de Lorenz no justifica restar urgencia a la atención de la zona.
+
+Además, la falta de rigurosidad en las conclusiones arrojadas por el estudio de la tabla pueden generar estigmas en la sociedad pues, por un lado, los datos no ponderados pueden causar situaciones donde se intuye el nivel de seguridad de una entidad federativa sin analizar consigo el volumen real que representan los registros y, además, el no incluir otros estudios para conocer las condiciones que dan pie a los valores registrados pueden dar pie a declaraciones que denoten un ambiente de violencia descontextualizado.
+
+
+\end{document}
