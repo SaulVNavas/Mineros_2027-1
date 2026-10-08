@@ -95,7 +95,7 @@
 \end{titlepage}
 
 \section{Medidas de Heterogeneidad}
-Se seleccionaron las variables de \texttt{nom\_municipio}, \texttt{nivel\_escolaridad} y \texttt{tiene\_ahorros\_id} para realizar las medidas de Índice de Variación Cualitativa (IQV), Índice de Gini-Simpson y Entropía de Shannon; los registros están ponderados con respecto al factor de expansión, esto con el fin de revisar los valores obtenidos no con respecto a los registros originales sino con respecto a los valores que la encuesta busca reflejar realmente.
+Se seleccionaron las variables de \texttt{nom\_municipio}, \texttt{nivel\_escolaridad} y \texttt{tiene\_ahorros\_id} para realizar las medidas de Índice de Variación Cualitativa (IQV), Índice de Gini-Simpson y Entropía de Shannon; los registros están ponderados con respecto al factor de expansión, esto con el fin de tomar las medidas no con respecto a los registros originales sino con respecto a los valores que la encuesta entrega conforme a la población reflejada.
 
 Las interpretaciones correspondientes a los valores obtenidos pueden ser observadas en el apartado de \textbf{Tabla de resultados y localización}. 
 
@@ -105,7 +105,7 @@ Se tomó la variable \texttt{tiene} para realizar las mediciones de Curva de Lor
 Las interpretaciones correspondientes a los valores obtenidos pueden ser observadas en el apartado de \textbf{Tabla de resultados y localización}. 
 
 \section{Síntesis – Gini y Entropía sobre la Misma Variable}
-Se seleccionó la variable \texttt{estrato\_socioeconomico} para realizar las medidas de Entropía de Shannon y Coeficiente de Gini; no se realizó la ponderación con respecto al factor de expansión, esto con el fin de estudiar únicamente los registros originales para evitar así la generación de sesgos
+Se seleccionó la variable \texttt{estrato\_socioeconomico} para realizar las medidas de Entropía de Shannon y Coeficiente de Gini; los valores fueron ponderados con respecto al factor de expansión con el fin de realizar la comparación con respecto a los valores reales que busca reflejar la encuesta para así maximizar la precisión de los valores que se comparan. 
 
 En el análisis del \texttt{estrato\_socioeconomico}, la diferencia conceptual radica en que la Entropía de Shannon mide el grado de incertidumbre o impredecibilidad al intentar adivinar a qué nivel pertenece un registro aleatorio, evaluando el equilibrio informativo de toda la distribución; por otra parte, el coeficiente de Gini-Simpson evalúa la concentración poblacional calculando la probabilidad exacta de que dos mujeres elegidas al azar pertenezcan a estratos diferentes, lo que lo convierte en una métrica mucho más influenciada por la forma en que se aglomera la gran mayoría de la muestra dentro de las categorías dominantes.
 
